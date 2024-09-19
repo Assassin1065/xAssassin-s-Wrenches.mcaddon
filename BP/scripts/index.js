@@ -229,10 +229,21 @@ function isExcludedBlock(block) {
     return block.typeId.includes("wall_banner") || block.typeId.includes("button") || block.typeId.includes("lever") || block.typeId.includes("wall_sign");
 }
 
-// Displays detailed information about the block's properties when the player sneaks
+// Function to display block information
 function displayBlockInfo(player, block) {
     let info = "§l§b" + block.typeId + "§r";
     info += "\n§4" + block.x + " §a" + block.y + " §9" + block.z;
     
     // Display only the allowed states
-    Object.entries(block.permutation.getAllStates()).forEach(([k, v
+    Object.entries(block.permutation.getAllStates()).forEach(([k, v]) => {
+        if (allowedStates.includes(k)) {
+            info += "\n§o§7" + k + "§r§8: ";
+            if (typeof v === "string") info += "§e";
+            if (typeof v === "number") info += "§3";
+            if (typeof v === "boolean") info += "§6";
+            info += v;
+        }
+    });
+
+    message(info, player); // Display the info message
+}
