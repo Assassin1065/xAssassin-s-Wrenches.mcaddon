@@ -33,7 +33,7 @@ const allowedStates = [
     "top_slot_bit", "upside_down_bit", "weirdo_direction", 
     "vertical_half", "pillar_axis", "attachment", 
     "attached_bit", "lit", "facing", "facing_direction", "wall_post_bit", 
-    "ground_sign_direction", "hanging"
+    "ground_sign_direction", "hanging", "open_bit"
 ];
 
 // Sends a message to the player's actionbar
