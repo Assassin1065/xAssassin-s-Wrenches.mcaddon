@@ -2,7 +2,7 @@
   "format_version": 2,
 
   "header": {
-    "name": "§cxAssassin's §aWrenches§r",
+    "name": "§cxAssassin's §aWrenches§r §l§gBP§r",
     "description": "Wrenches. Basically a debug stick for survival.",
     "uuid": "be747637-62bd-462e-a0ba-dfdd81ac1ffe",
     "version": "1.0.0",
