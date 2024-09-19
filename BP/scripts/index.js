@@ -32,8 +32,8 @@ const allowedStates = [
     "wall_connection_type_north", "wall_connection_type_east", 
     "top_slot_bit", "upside_down_bit", "weirdo_direction", 
     "vertical_half", "pillar_axis", "attachment", 
-    "attached_bit", "lit", "facing", "facing_direction", "wall_post_bit", 
-    "ground_sign_direction", "hanging", "open_bit"
+    "attached_bit", "lit", "facing", "facing_direction", "minecraft:facing_direction", "wall_post_bit", 
+    "ground_sign_direction", "hanging", "open_bit", "orientation", "direction", "minecraft:direction", "rail_direction"
 ];
 
 // Sends a message to the player's actionbar
@@ -89,9 +89,16 @@ world.beforeEvents.itemUseOn.subscribe(ev => {
     // Ensure the cooldown has expired before proceeding
     if (!hasCooldownExpired(player)) return;
 
+    const block = ev.block;
+    const blockTypeId = block.typeId; // Use typeId to get the block's identifier
+
+    // Return if the block's typeId includes "smithing", "frame", or "vault"
+    if (blockTypeId.includes("smithing") || blockTypeId.includes("frame") || blockTypeId.includes("shulker") || blockTypeId.includes("button") || blockTypeId.includes("crafting_table") || blockTypeId.includes("vault")) {
+        return;
+    }
+
     ev.cancel = true; // Cancel default behavior
 
-    const block = ev.block;
     const hasProperties = blockHasValidProperties(block);
 
     // Delay by 5 ticks to check for the wrench and damage the item
@@ -151,7 +158,7 @@ function changeSelectedProperty(player, block) {
     if (!names.length) return;
 
     // Exclude "facing_direction" for furnace-like blocks
-    if (block.typeId.includes("furnace") || block.typeId.includes("smoker")) {
+    if (block.typeId.includes("furnace") || block.typeId.includes("chest") || block.typeId.includes("observer") || block.typeId.includes("smoker")) {
         const index = names.indexOf("facing_direction");
         if (index > -1) names.splice(index, 1);
     }
@@ -181,7 +188,7 @@ function updateBlockProperty(player, block) {
     }
 
     // Exclude "facing_direction" for furnace-like blocks
-    if (block.typeId.includes("furnace", "smoker")) {
+    if (block.typeId.includes("furnace", "smoker", "chest", "observer")) {
         const index = names.indexOf("facing_direction");
         if (index > -1) names.splice(index, 1);
     }
@@ -226,7 +233,7 @@ function blockHasValidProperties(block) {
 
 // Checks if a block is excluded from modification (e.g., banners, buttons, levers, and wall signs)
 function isExcludedBlock(block) {
-    return block.typeId.includes("wall_banner") || block.typeId.includes("button") || block.typeId.includes("lever") || block.typeId.includes("wall_sign");
+    return block.typeId.includes("wall_banner") || block.typeId.includes("button") || block.typeId.includes("ladder") || block.typeId.includes("lever") || block.typeId.includes("wall_sign");
 }
 
 // Function to display block information
@@ -246,4 +253,4 @@ function displayBlockInfo(player, block) {
     });
 
     message(info, player); // Display the info message
-}
+        }
