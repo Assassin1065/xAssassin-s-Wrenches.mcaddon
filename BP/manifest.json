@@ -2,10 +2,10 @@
   "format_version": 2,
 
   "header": {
-    "name": "Wrench",
-    "description": "wrench",
+    "name": "§cxAssassin's §aWrenches§r",
+    "description": "Wrenches. Basically a debug stick for survival.",
     "uuid": "be747637-62bd-462e-a0ba-dfdd81ac1ffe",
-    "version": "1.9.0",
+    "version": "1.0.0",
     "min_engine_version": [ 1, 21, 0 ]
   },
 
@@ -28,12 +28,8 @@
 
   "dependencies": [
     {
-      "module_name": "@minecraft/server-ui",
-      "version": "1.1.0"
-    },
-    {
       "module_name": "@minecraft/server",
-      "version": "1.13.0"
+      "version": "1.14.0"
     }
   ]
 }
