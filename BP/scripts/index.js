@@ -11,7 +11,7 @@
 +* GitHub: https://github.com/Assassin1065/xAssassin-s-Wrenches
 +*
 +* Copyright (c) 2023-2024 VYT <https://vytdev.github.io>
-+* Copyright (c) 2023-2024 xAssassin <https://Assassin1065.github.io>
++* Copyright (c) 2024 xAssassin <https://Assassin1065.github.io>
 +* This project is licensed under the MIT License, as well as the project it's built on. This project was made with explicit permission by the original copyright holder and complies with the terms in the MIT License.
 +* See LICENSE for more details.
 +* See Credits.txt for a list of contributors. Thank you to all of them for making this project possible.
